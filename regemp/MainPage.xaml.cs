@@ -17,28 +17,27 @@ namespace regemp
 
         private  async void btnAbrir_Clicked(object sender, EventArgs e)
         {
-            string nombreUsuario = "";
-            string mensaje = validarIngreso(txtUser.Text, txtPassword.Text);
-            if (mensaje!="") {
-                await DisplayAlert("Error de validación", mensaje, "Continuar");
+            Empleado empleado = null;
+            empleado = validarIngreso(txtUser.Text, txtPassword.Text);
+            if (empleado ==null) {
+                await DisplayAlert("Error de validación", "Credenciales incorrectas", "Continuar");
             }
             else
             {
-                nombreUsuario = txtUser.Text;
-                await Navigation.PushAsync(new Inicio(nombreUsuario));
+
+                await Navigation.PushAsync(new Inicio(empleado));
             }
         }
-        private string validarIngreso(string usuario, string clave)
+        private Empleado validarIngreso(string usuario, string clave)
         {
-            string mensaje = "";
-            if (usuario != "estudiante2022")
+            ApiConnect api = new ApiConnect();
+            api.login(usuario, clave);
+            Empleado result = null;
+            if (api.empleadoLogueado!= null)
             {
-                mensaje = "Usuario incorrecto !";
-            } else if (clave != "uisrael2022")
-            {
-                mensaje = "Clave incorrecta !";
+                result = api.empleadoLogueado;
             }
-            return mensaje;
+            return result;
         }
     }
 }

@@ -12,10 +12,10 @@ namespace regemp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Inicio : ContentPage
     {
-        public Inicio(string nombreUsuario)
+        public Inicio(Empleado empleadoLogueado)
         {
             InitializeComponent();
-            lblNombreUsuario.Text = nombreUsuario;
+            lblNombreUsuario.Text = empleadoLogueado.email;
         }
     }
 }
