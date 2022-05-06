@@ -9,7 +9,7 @@ namespace regemp
 {
     public class ApiConnect
     {
-        private const string API_URL = "http://127.0.0.1:8000/";
+        private const string API_URL = "http://172.26.112.1:8000/";
         private const string EMPLEADO_ENDPOINT = "empleado";
         private const string DEPARTEMENTO_ENDPOINT = "departamento";
 
@@ -18,7 +18,7 @@ namespace regemp
         public async void login(string usuario, string clave)
         {
             HttpRequestMessage request = new HttpRequestMessage();
-            request.RequestUri= new Uri(API_URL);
+            request.RequestUri= new Uri(API_URL + EMPLEADO_ENDPOINT);
             request.Method = HttpMethod.Get;
             request.Headers.Add("Accept","application/json");
             HttpClient client = new HttpClient();

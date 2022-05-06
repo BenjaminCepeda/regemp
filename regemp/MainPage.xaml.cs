@@ -18,26 +18,27 @@ namespace regemp
         private  async void btnAbrir_Clicked(object sender, EventArgs e)
         {
             Empleado empleado = null;
-            empleado = validarIngreso(txtUser.Text, txtPassword.Text);
-            if (empleado ==null) {
-                await DisplayAlert("Error de validación", "Credenciales incorrectas", "Continuar");
+            EmpleadoClient api;
+            try
+            {
+                api = new EmpleadoClient();
+                empleado = await api.login(txtUser.Text, txtPassword.Text);
             }
-            else
+            catch (Exception ex)
             {
 
-                await Navigation.PushAsync(new Inicio(empleado));
             }
-        }
-        private Empleado validarIngreso(string usuario, string clave)
-        {
-            ApiConnect api = new ApiConnect();
-            api.login(usuario, clave);
-            Empleado result = null;
-            if (api.empleadoLogueado!= null)
+            finally
             {
-                result = api.empleadoLogueado;
+                if (empleado == null)
+                {
+                    await DisplayAlert("Error de validación", "Credenciales incorrectas", "Continuar");
+                }
+                else
+                {
+                    await Navigation.PushAsync(new Inicio(empleado));
+                }
             }
-            return result;
         }
     }
 }
