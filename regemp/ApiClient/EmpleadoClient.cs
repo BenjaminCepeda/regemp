@@ -5,14 +5,15 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using regemp.ApiClient;
 
 namespace regemp
 {
 
     public class EmpleadoClient : IApiService<Empleado>
     {
-
-        private const string API_URL = "http://127.0.0.1:8000/";
+        // NO FUNCIONA CON 127.0.0.1
+        private const string API_URL = "http://192.168.1.2:8000/";
         private const string ENDPOINT_NAME = "empleado";
         HttpClient client;
         Uri uri;
