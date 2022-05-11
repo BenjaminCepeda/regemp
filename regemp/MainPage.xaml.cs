@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using regemp.ApiClient;
+using regemp.util;
 
 namespace regemp
 {
@@ -26,13 +28,14 @@ namespace regemp
             }
             catch (Exception ex)
             {
-
+                DependencyService.Get<IMensaje>().LongAlert("Error del sistema: " + ex.Message);
             }
             finally
             {
                 if (empleado == null)
                 {
-                    await DisplayAlert("Error de validación", "Credenciales incorrectas", "Continuar");
+                    DependencyService.Get<IMensaje>().LongAlert("Credenciales incorrectas");
+                    //await DisplayAlert("Error de validación", "Credenciales incorrectas", "Continuar");
                 }
                 else
                 {

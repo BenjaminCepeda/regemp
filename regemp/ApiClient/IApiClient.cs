@@ -5,7 +5,7 @@ using System.Text;
 
 namespace regemp
 {
-    interface IApiService<T>
+    interface IApiClient<T>
     {
         Task<List<T>> RefreshDataAsync();
         Task SaveDataAsync(T item, bool isNewItem);
