@@ -10,7 +10,7 @@ using regemp.ApiClient;
 namespace regemp
 {
 
-    public class EmpleadoClient : IApiService<Empleado>
+    public class EmpleadoClient : IApiClient<Empleado>
     {
         // NO FUNCIONA CON 127.0.0.1
         private const string API_URL = "http://192.168.1.2:8000/";
