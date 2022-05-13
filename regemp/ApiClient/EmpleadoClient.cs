@@ -13,10 +13,7 @@ namespace regemp
 
     public class EmpleadoClient : IApiClient<Empleado>
     {
-        // NO FUNCIONA CON 127.0.0.1
-        // DIRECCION DEL SERVICIO PUBLICADO https://stormy-badlands-17405.herokuapp.com
 
-        
         private const string ENDPOINT_NAME = "empleado";
         HttpClient client;
         Uri uri;
