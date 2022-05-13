@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using regemp.ApiClient;
 
+
 namespace regemp
 {
 
@@ -15,7 +16,7 @@ namespace regemp
         // NO FUNCIONA CON 127.0.0.1
         // DIRECCION DEL SERVICIO PUBLICADO https://stormy-badlands-17405.herokuapp.com
 
-        private const string API_URL = "https://stormy-badlands-17405.herokuapp.com/";
+        
         private const string ENDPOINT_NAME = "empleado";
         HttpClient client;
         Uri uri;
@@ -31,7 +32,7 @@ namespace regemp
         public async Task<List<Empleado>> RefreshDataAsync()
         {
             List<Empleado> datos = null;
-            Uri uri = new Uri(string.Format(API_URL + ENDPOINT_NAME, string.Empty));
+            Uri uri = new Uri(string.Format(ApiConstants.API_URL + ENDPOINT_NAME, string.Empty));
             try
             {
                 HttpResponseMessage response = await client.GetAsync(uri);
@@ -50,7 +51,7 @@ namespace regemp
 
         public async Task SaveDataAsync(Empleado item, bool isNewItem)
         {
-            Uri uri = new Uri(string.Format(API_URL + ENDPOINT_NAME, string.Empty));
+            Uri uri = new Uri(string.Format(ApiConstants.API_URL + ENDPOINT_NAME, string.Empty));
             try
             {
                 string json = JsonConvert.SerializeObject(item);
@@ -80,7 +81,7 @@ namespace regemp
 
         public async Task DeleteDataAsync(string id)
         {
-            Uri uri = new Uri(string.Format("{0}/?id={1}",API_URL + ENDPOINT_NAME, id));
+            Uri uri = new Uri(string.Format("{0}/?id={1}", ApiConstants.API_URL + ENDPOINT_NAME, id));
             try
             {
                 HttpResponseMessage response = await client.DeleteAsync(uri);
@@ -100,7 +101,7 @@ namespace regemp
         public async Task<Empleado> login(string username, string pwd)
         {
             Empleado empleado = null;
-            Uri uri = new Uri(string.Format("{0}/?email={1}&pwd={2} ",API_URL + ENDPOINT_NAME, username, pwd));
+            Uri uri = new Uri(string.Format("{0}/?email={1}&pwd={2} ", ApiConstants.API_URL + ENDPOINT_NAME, username, pwd));
             try
             {
                 HttpResponseMessage response = await client.GetAsync(uri);
