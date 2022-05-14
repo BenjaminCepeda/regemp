@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using regemp.ApiClient;
 
 namespace regemp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuInicial : ContentPage
     {
-        public MenuInicial()
+        public MenuInicial(Empleado empleadoLogueado)
         {
             InitializeComponent();
+            lblNombreUsuario.Text = empleadoLogueado.email;
         }
     }
 }
