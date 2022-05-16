@@ -40,6 +40,7 @@ namespace regemp
                 else
                 {
                     await Navigation.PushAsync(new Inicio(empleado));
+
                 }
             }
         }

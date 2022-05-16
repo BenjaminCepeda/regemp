@@ -13,7 +13,6 @@ namespace regemp
 
     public class EmpleadoClient : IApiClient<Empleado>
     {
-
         private const string ENDPOINT_NAME = "empleado";
         HttpClient client;
 
