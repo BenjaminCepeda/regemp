@@ -7,7 +7,8 @@ namespace regemp
 {
     interface IApiClient<T>
     {
-        Task<List<T>> RefreshDataAsync();
+        Task<List<T>> GetAllDataAsync();
+        Task<T> GetDataAsync(string id);
         Task SaveDataAsync(T item, bool isNewItem);
         Task DeleteDataAsync(string id);
     }

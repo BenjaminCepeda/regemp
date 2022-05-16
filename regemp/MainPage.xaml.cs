@@ -28,7 +28,7 @@ namespace regemp
             }
             catch (Exception ex)
             {
-                DependencyService.Get<IMensaje>().LongAlert("Error del sistema: " + ex.Message);
+                DependencyService.Get<IMensaje>().LongAlert("Error al acceder a datos: " + ex.Message);
             }
             finally
             {
