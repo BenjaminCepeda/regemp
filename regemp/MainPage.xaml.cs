@@ -39,12 +39,7 @@ namespace regemp
                 }
                 else
                 {
-<<<<<<< HEAD
-                    await Navigation.PushAsync(new MenuInicial(empleado));
-=======
                     await Navigation.PushAsync(new Inicio(empleado));
-
->>>>>>> BenjaminLocal
                 }
             }
         }
