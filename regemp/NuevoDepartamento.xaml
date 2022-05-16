@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="regemp.MenuInicial">
+             x:Class="regemp.NuevoDepartamento">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="ButtonStyle" TargetType="Button">
@@ -24,9 +24,8 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Frame BackgroundColor="#2196F3" Padding="20" CornerRadius="0">
-                <Image Source="https://www.kodice.com.ec/wp-content/uploads/2022/04/Logo-empreg-300x225.png" HorizontalOptions="CenterAndExpand" />
-                
+            <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+                <Image Source="https://www.kodice.com.ec/wp-content/uploads/2022/04/Logo-empreg-300x225.png"/>
             </Frame>
             <Grid VerticalOptions="Center">
                 <Grid.RowDefinitions>
@@ -36,13 +35,22 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label Text="Bienvenido: " FontSize="Large" FontAttributes="Bold" TextColor="red" HorizontalTextAlignment="End" Grid.Row="1" Grid.Column="0" />
-                <Label x:Name="lblNombreUsuario" Grid.Row="1" Grid.Column="1" 
-                   Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Start"/>
+                <Label Text="Departamento" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" />
+                <Label x:Name="lblDescripcion" Grid.Row="1" Grid.Column="0" Text="Descripción:"
+                   Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
+                <Entry x:Name="txtDescripcion"  Placeholder="Ingrese la descripción" Grid.Row="2" Grid.Column="0"/>
+                <Label x:Name="lblEstado" Grid.Row="3" Grid.Column="0" Text="Estado"
+                   Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
+                <Picker x:Name="pckEstados" Grid.Row="4" Grid.Column="0" BindingContext="{Binding estados}"
+                    ItemDisplayBinding="{Binding descripcion}" SelectedItem="{Binding estadoSeleccionado}"
+                    SelectedIndexChanged="pckEstados_SelectedIndexChanged" />
+                <Button x:Name="btnGrabar" Text="Grabar" Clicked="btnGrabar_Clicked" Style="{StaticResource ButtonStyle}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"/>
+
             </Grid>
         </StackLayout>
     </ContentPage.Content>

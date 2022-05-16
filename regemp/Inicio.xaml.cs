@@ -13,10 +13,17 @@ namespace regemp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Inicio : ContentPage
     {
+        Empleado empleado;
         public Inicio(Empleado empleadoLogueado)
         {
             InitializeComponent();
-            lblNombreUsuario.Text = empleadoLogueado.email;
+            empleado = empleadoLogueado;
+            lblNombreUsuario.Text = empleado.nombres + " " + empleado.apellidos;
+        }
+
+        async private void btnDepartamentos_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Departamentos());
         }
     }
 }

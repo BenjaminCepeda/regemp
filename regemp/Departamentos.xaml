@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="regemp.Departamentos">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="BackgroundColor" Value="#77d065"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="HeightRequest" Value="42"/>
+                <Setter Property="BorderRadius" Value="5"/>
+                <Setter Property="BorderWidth" Value="0" />
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style x:Key="TitleLabelStyle" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="End"/>
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+            <Style x:Key="ListLabelStyle" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+            <Style x:Key="MessageLabelStyle" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#77d065"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="Padding" Value="5"/>
+                
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+                <Image Source="https://www.kodice.com.ec/wp-content/uploads/2022/04/Logo-empreg-300x225.png"/>
+            </Frame>
+            <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="CenterAndExpand">
+                <Label Text="Departamentos" Style="{StaticResource ListLabelStyle}" FontSize="Large"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="EndAndExpand">
+                <ImageButton x:Name="btnNuevo" Source="https://www.kodice.com.ec/wp-content/uploads/2022/05/insert_icon.png" 
+                             Clicked="btnNuevo_Clicked"/>
+            </StackLayout>
+            <ListView x:Name="ListaElementos" HasUnevenRows="True" ItemsSource="{Binding }">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" Padding="5" >
+                                <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="FillAndExpand">
+                                    <Label x:Name="lblDescripcion" Text="{Binding descripcion}" Style="{StaticResource ListLabelStyle}"/>
+                                    <StackLayout Orientation="Horizontal" Padding="10">
+                                        <Label Text="{Binding Estado.descripcion}" Style="{StaticResource MessageLabelStyle}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="End">
+                                    <ImageButton x:Name="btnBorrar" Source="https://www.kodice.com.ec/wp-content/uploads/2022/05/delete_icon.png" 
+                                                 Clicked="btnBorrar_Clicked" CommandParameter="{Binding .}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
