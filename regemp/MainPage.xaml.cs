@@ -39,7 +39,7 @@ namespace regemp
                 }
                 else
                 {
-                    await Navigation.PushAsync(new Inicio(empleado));
+                    await Navigation.PushAsync(new MenuInicial(empleado));
                 }
             }
         }
