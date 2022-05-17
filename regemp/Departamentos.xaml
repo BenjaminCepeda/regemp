@@ -63,7 +63,11 @@
                                         <Label Text="{Binding Estado.descripcion}" Style="{StaticResource MessageLabelStyle}"/>
                                     </StackLayout>
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="End">
+                                <StackLayout Orientation="Horizontal" Padding="2" HorizontalOptions="End">
+                                    <ImageButton x:Name="btnEditar" Source="https://www.kodice.com.ec/wp-content/uploads/2022/05/insert_icon.png" 
+                                                 Clicked="btnEditar_Clicked" CommandParameter="{Binding .}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Padding="2" HorizontalOptions="End">
                                     <ImageButton x:Name="btnBorrar" Source="https://www.kodice.com.ec/wp-content/uploads/2022/05/delete_icon.png" 
                                                  Clicked="btnBorrar_Clicked" CommandParameter="{Binding .}"/>
                                 </StackLayout>

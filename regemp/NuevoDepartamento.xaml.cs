@@ -17,14 +17,26 @@ namespace regemp
         Departamento departamento;
         List<Estado> estados;
         int estadoSeleccionado=1;
-
+        bool esNuevoRegistro = true;
         public NuevoDepartamento()
         {
-            EstadoClient estadoAPI = new EstadoClient();
             InitializeComponent();
+            EstadoClient estadoAPI = new EstadoClient();
             departamento = new Departamento();
             estados = estadoAPI.GetAllDataAsync();
             pckEstados.ItemsSource = estados;
+
+        }
+        public NuevoDepartamento(Departamento departamentoActual)
+        {
+            InitializeComponent();
+            esNuevoRegistro = false;
+            EstadoClient estadoAPI = new EstadoClient();
+            departamento = departamentoActual;
+            estados = estadoAPI.GetAllDataAsync();
+            pckEstados.ItemsSource = estados;
+            pckEstados.SelectedItem = departamento;
+            txtDescripcion.Text = departamento.descripcion;
 
         }
 
@@ -36,7 +48,7 @@ namespace regemp
             try
             {
                 api = new DepartamentoClient();
-                await api.SaveDataAsync(departamento,true);
+                await api.SaveDataAsync(departamento,esNuevoRegistro);
             }
             catch (Exception ex)
             {
@@ -45,7 +57,8 @@ namespace regemp
             finally
             {
                 DependencyService.Get<IMensaje>().LongAlert("Registro guardado");
-                await Navigation.PopAsync();
+                await Navigation.PushAsync(new Departamentos());
+                //await Navigation.PopAsync();
             }
         }
 
