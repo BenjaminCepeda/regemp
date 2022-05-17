@@ -64,5 +64,12 @@ namespace regemp
                 cargaElementos();
             }
         }
+
+        async private void btnEditar_Clicked(object sender, EventArgs e)
+        {
+            var imgButton = sender as ImageButton;
+            var departamentoActual = (Departamento)imgButton.BindingContext;
+            await Navigation.PushAsync(new NuevoDepartamento(departamentoActual));
+        }
     }
 }
