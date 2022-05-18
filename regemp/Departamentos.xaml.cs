@@ -71,5 +71,9 @@ namespace regemp
             var departamentoActual = (Departamento)imgButton.BindingContext;
             await Navigation.PushAsync(new NuevoDepartamento(departamentoActual));
         }
+        protected override async void OnAppearing()
+        {
+            cargaElementos();
+        }
     }
 }

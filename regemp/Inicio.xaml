@@ -40,12 +40,16 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Label Text="Bienvenido" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="0" />
+                <Label Text="Bienvenido" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" />
                 
-                <Label x:Name="lblNombreUsuario" Grid.Row="3" Grid.Column="0" Text="Nombre Usuario"
+                <Label x:Name="lblNombreUsuario" Grid.Row="1" Grid.Column="0" Text="Nombre Usuario"
                    Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Center"/>
                 
-                <Button x:Name="btnDepartamentos" Text="Departementos" Clicked="btnDepartamentos_Clicked" Style="{StaticResource ButtonStyle}" Grid.Row="8" Grid.Column="0"/>
+                <Button x:Name="btnDepartamentos" Text="Departamentos" Clicked="btnDepartamentos_Clicked" Style="{StaticResource ButtonStyle}" Grid.Row="3" Grid.Column="0"/>
+                <Button x:Name="btnPerfiles" Text="Perfiles" Clicked="btnPerfiles_Clicked" Style="{StaticResource ButtonStyle}" Grid.Row="4" Grid.Column="0"/>
+                <Button x:Name="btnUsuarios" Text="Usuarios" Clicked="btnUsuarios_Clicked" Style="{StaticResource ButtonStyle}" Grid.Row="5" Grid.Column="0"/>
+                <Button x:Name="btnEmpleados" Text="Empleados" Clicked="btnEmpleados_Clicked" Style="{StaticResource ButtonStyle}" Grid.Row="6" Grid.Column="0"/>
+                <Button x:Name="btnMenuBotones" Text="MENU BOTONES" Clicked="btnMenuBotones_Clicked" Style="{StaticResource ButtonStyle}" Grid.Row="7" Grid.Column="0"/>
 
             </Grid>
         </StackLayout>
