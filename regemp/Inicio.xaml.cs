@@ -25,5 +25,25 @@ namespace regemp
         {
             await Navigation.PushAsync(new Departamentos());
         }
+
+        private void btnPerfiles_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUsuarios_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEmpleados_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMenuBotones_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

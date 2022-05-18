@@ -57,8 +57,8 @@ namespace regemp
             finally
             {
                 DependencyService.Get<IMensaje>().LongAlert("Registro guardado");
-                await Navigation.PushAsync(new Departamentos());
-                //await Navigation.PopAsync();
+                //await Navigation.PushAsync(new Departamentos());
+                await Navigation.PopAsync();
             }
         }
 
