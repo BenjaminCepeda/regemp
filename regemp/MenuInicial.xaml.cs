@@ -13,10 +13,30 @@ namespace regemp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuInicial : ContentPage
     {
-        public MenuInicial(Empleado empleadoLogueado)
+        public MenuInicial()
         {
             InitializeComponent();
-            lblNombreUsuario.Text = empleadoLogueado.email;
+            
+        }
+
+        private void usuario_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEmpleado_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDepartamento_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPerfil_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

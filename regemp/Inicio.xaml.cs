@@ -41,8 +41,9 @@ namespace regemp
 
         }
 
-        private void btnMenuBotones_Clicked(object sender, EventArgs e)
+        async private void btnMenuBotones_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PushAsync(new MenuInicial());
 
         }
     }
