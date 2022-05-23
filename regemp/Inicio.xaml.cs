@@ -26,14 +26,14 @@ namespace regemp
             await Navigation.PushAsync(new Departamentos());
         }
 
-        private void btnPerfiles_Clicked(object sender, EventArgs e)
+        async private void btnPerfiles_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new Perfiles());
         }
 
-        private void btnUsuarios_Clicked(object sender, EventArgs e)
+        async private void btnUsuarios_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new Usuarios());
         }
 
         private void btnEmpleados_Clicked(object sender, EventArgs e)
