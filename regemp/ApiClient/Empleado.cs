@@ -18,11 +18,8 @@ namespace regemp.ApiClient
         public int idDepartamento { get; set; }
         public Departamento departamento { get; set; }
         public byte[] foto { get; set; }
-        public int estado { get; set; }
-        public Estado Estado
-        {
-            get { return new Estado(estado); }
-        }
+        public int idEstado { get; set; }
+        public Estado estado { get; set; }
 
         public Empleado()
         {
