@@ -46,10 +46,17 @@ namespace regemp
             EstadoClient estadoAPI = new EstadoClient();
             estados = await estadoAPI.GetAllDataAsync();
             pckEstados.ItemsSource = estados;
+<<<<<<< HEAD
             departamentos = await departamentoAPI.GetAllDataAsync();
             pckUsuarios.ItemsSource = usuarios;
             pckDepartamentos.ItemsSource = departamentos;
             pckEstados.ItemsSource = estados;
+=======
+            usuarios = await usuarioAPI.GetAllDataAsync();
+            pckUsuarios.ItemsSource = usuarios;
+            departamentos = await departamentoAPI.GetAllDataAsync();
+            pckDepartamentos.ItemsSource = departamentos;
+>>>>>>> BenjaminLocal
 
             try
             {

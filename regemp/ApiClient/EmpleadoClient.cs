@@ -63,7 +63,7 @@ namespace regemp
 
         public async Task SaveDataAsync(Empleado item, bool isNewItem)
         {
-            Uri uri = new Uri(string.Format(ApiConstants.API_URL + ENDPOINT_NAME, string.Empty));
+            Uri uri = new Uri(string.Format(ApiConstants.API_URL + ENDPOINT_NAME + "/", string.Empty));
             try
             {
                 string json = JsonConvert.SerializeObject(item);
@@ -82,19 +82,19 @@ namespace regemp
 
                 if (response.IsSuccessStatusCode)
                 {
-                    Debug.WriteLine(string.Format(ApiConstants.SAVE_MESSAGE,ENDPOINT_NAME));
+                    Debug.WriteLine(string.Format(ApiConstants.SAVE_MESSAGE, ENDPOINT_NAME));
                 }
 
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(string.Format(ApiConstants.ERROR_MESSAGE, ENDPOINT_NAME, ex.Message));                
+                Debug.WriteLine(string.Format(ApiConstants.ERROR_MESSAGE, ENDPOINT_NAME, ex.Message));
             }
         }
 
         public async Task DeleteDataAsync(string id)
         {
-            Uri uri = new Uri(string.Format("{0}/?id={1}", ApiConstants.API_URL + ENDPOINT_NAME, id));
+            Uri uri = new Uri(string.Format("{0}/{1}/", ApiConstants.API_URL + ENDPOINT_NAME, id));
             try
             {
                 HttpResponseMessage response = await client.DeleteAsync(uri);
