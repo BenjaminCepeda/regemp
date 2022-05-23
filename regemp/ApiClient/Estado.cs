@@ -8,14 +8,7 @@ namespace regemp.ApiClient
     {
         public int id { get; set; }
         public string descripcion { get; set; }
+        public string color { get; set; }
 
-        public Estado(int id)
-        {
-            this.id = id;
-            if (id == 1)
-                descripcion = "Activo";
-            else
-                descripcion = "Desactivado";
-        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="regemp.Departamentos">
+             x:Class="regemp.Usuarios">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="ButtonStyle" TargetType="Button">
@@ -34,9 +34,8 @@
                 <Setter Property="BackgroundColor" Value="#77d065"/>
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="Padding" Value="5"/>
-                
-            </Style>
 
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -46,27 +45,28 @@
                 <Image Source="https://www.kodice.com.ec/wp-content/uploads/2022/04/Logo-empreg-300x225.png"/>
             </Frame>
             <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="CenterAndExpand">
-                <Label Text="Departamentos" Style="{StaticResource ListLabelStyle}" FontSize="Large"/>
+                <Label Text="Usuarios" Style="{StaticResource ListLabelStyle}" FontSize="Large"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="EndAndExpand">
                 <ImageButton x:Name="btnNuevo" Source="https://www.kodice.com.ec/wp-content/uploads/2022/05/insert_icon.png" 
                              Clicked="btnNuevo_Clicked"/>
             </StackLayout>
-            <ListView x:Name="lstElementos" HasUnevenRows="True" SelectionMode="None" IsVisible="True" 
-                      ItemsSource="{Binding }">
+            <ListView x:Name="ListaElementos" HasUnevenRows="True" ItemsSource="{Binding }">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" Padding="5" >
                                 <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="FillAndExpand">
-                                    <Label x:Name="lblDescripcion" Text="{Binding descripcion}" Style="{StaticResource ListLabelStyle}"/>
+                                    <Label x:Name="lblombreUsuario" Text="{Binding nombreUsuario}" Style="{StaticResource ListLabelStyle}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="FillAndExpand">
                                     <StackLayout Orientation="Horizontal" Padding="10">
                                         <Label Text="{Binding estado.descripcion}" Style="{StaticResource MessageLabelStyle}"/>
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="2" HorizontalOptions="End">
-                                    <ImageButton x:Name="btnEditar" Source="https://www.kodice.com.ec/wp-content/uploads/2022/05/edit_icon.png"                         
-                                            Clicked="btnEditar_Clicked"  CommandParameter="{Binding .}"/>
+                                    <ImageButton x:Name="btnEditar" Source="https://www.kodice.com.ec/wp-content/uploads/2022/05/edit_icon.png" 
+                                                 Clicked="btnEditar_Clicked" CommandParameter="{Binding .}"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="2" HorizontalOptions="End">
                                     <ImageButton x:Name="btnBorrar" Source="https://www.kodice.com.ec/wp-content/uploads/2022/05/remove_icon-1.png" 
