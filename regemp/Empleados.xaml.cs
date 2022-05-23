@@ -24,11 +24,7 @@ namespace regemp
 
         async private void btnNuevo_Clicked(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            await Navigation.PushAsync(new NuevoUsuario());
-=======
             await Navigation.PushAsync(new NuevoEmpleado());
->>>>>>> BenjaminLocal
         }
 
         async public void cargaElementos()
