@@ -60,7 +60,7 @@ namespace regemp.ApiClient
 
         public async Task SaveDataAsync(Departamento item, bool isNewItem)
         {
-            Uri uri = new Uri(string.Format(ApiConstants.API_URL + ENDPOINT_NAME+"/", string.Empty));
+            Uri uri = new Uri(string.Format(ApiConstants.API_URL + ENDPOINT_NAME + "/", string.Empty));
             try
             {
                 string json = JsonConvert.SerializeObject(item);
