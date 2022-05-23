@@ -11,11 +11,9 @@ namespace regemp.ApiClient
         public string clave { get; set; }
         public int idPerfil {get;set;}
         public Perfil perfil { get; set; }
-        public int estado { get; set; }
-        public Estado Estado
-        {
-            get { return new Estado(estado); }
-        }
+        public int idEstado { get; set; }
+        public Estado estado { get; set; }
+
 
     }
 }

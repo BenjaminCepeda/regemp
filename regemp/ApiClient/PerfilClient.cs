@@ -1,25 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Text;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using regemp.util;
 using System.Diagnostics;
 
 namespace regemp.ApiClient
 {
-    public class DepartamentoClient : IApiClient<Departamento>
+    public class PerfilClient : IApiClient<Perfil>
     {
-        private const string ENDPOINT_NAME = "departamento";
+        private const string ENDPOINT_NAME = "perfil";
         HttpClient client;
 
-        public DepartamentoClient()
+        public PerfilClient()
         {
             client = new HttpClient();
         }
-        public async Task<List<Departamento>> GetAllDataAsync()
+        public async Task<List<Perfil>> GetAllDataAsync()
         {
-            List<Departamento> datos = null;
+            List<Perfil> datos = null;
             Uri uri = new Uri(string.Format(ApiConstants.API_URL + ENDPOINT_NAME, string.Empty));
             try
             {
@@ -27,7 +28,7 @@ namespace regemp.ApiClient
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    datos = JsonConvert.DeserializeObject<List<Departamento>>(content);
+                    datos = JsonConvert.DeserializeObject<List<Perfil>>(content);
                 }
             }
             catch (Exception ex)
@@ -37,9 +38,9 @@ namespace regemp.ApiClient
             return datos;
         }
 
-        public async Task<Departamento> GetDataAsync(string id)
+        public async Task<Perfil> GetDataAsync(string id)
         {
-            Departamento datos = null;
+            Perfil datos = null;
             Uri uri = new Uri(string.Format(ApiConstants.API_URL + ENDPOINT_NAME + "/{0}/", id));
             try
             {
@@ -47,7 +48,7 @@ namespace regemp.ApiClient
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    datos = JsonConvert.DeserializeObject<Departamento>(content);
+                    datos = JsonConvert.DeserializeObject<Perfil>(content);
                 }
             }
             catch (Exception ex)
@@ -58,7 +59,7 @@ namespace regemp.ApiClient
         }
 
 
-        public async Task SaveDataAsync(Departamento item, bool isNewItem)
+        public async Task SaveDataAsync(Perfil item, bool isNewItem)
         {
             Uri uri = new Uri(string.Format(ApiConstants.API_URL + ENDPOINT_NAME + "/", string.Empty));
             try
