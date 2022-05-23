@@ -9,11 +9,8 @@ namespace regemp.ApiClient
         public int id { get; set; }
         public string descripcion { get; set; }
         public int esAdministrador { get; set; }
-        public int estado { get; set; }
-        public Estado Estado
-        {
-            get { return new Estado(estado); }
-        }
+        public int idEstado { get; set; }
+        public Estado estado { get; set; }
 
     }
 }

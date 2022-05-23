@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="regemp.NuevoDepartamento">
+             x:Class="regemp.NuevoUsuario">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="ButtonStyle" TargetType="Button">
@@ -36,21 +36,30 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label Text="Departamento" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" />
-                <Label x:Name="lblDescripcion" Grid.Row="1" Grid.Column="0" Text="Descripción:"
+                <Label Text="Usuario" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" />
+                <Label x:Name="lblNombreUsuario" Grid.Row="1" Grid.Column="0" Text="Nombre usuario:"
                    Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
-                <Entry x:Name="txtDescripcion"  Placeholder="Ingrese la descripción" Grid.Row="2" Grid.Column="0" BindingContext="{Binding departamento}" Text="{Binding descripcion}"/>
-                <Label x:Name="lblEstado" Grid.Row="3" Grid.Column="0" Text="Estado"
+                <Entry x:Name="txtNombreUsuario"  Placeholder="Ingrese el usuario" Grid.Row="2" Grid.Column="0" />
+                <Label x:Name="lblClave" Grid.Row="3" Grid.Column="0" Text="Clave:"
                    Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
-                <Picker x:Name="pckEstados" Grid.Row="4" Grid.Column="0" ItemsSource="{Binding estados}" 
-                    ItemDisplayBinding="{Binding descripcion}"   SelectedItem="{Binding estadoSeleccionado}"                SelectedIndexChanged="pckEstados_SelectedIndexChanged" />
-                <Label x:Name="lblSelecionado" Grid.Row="5" Grid.Column="0" BindingContext="{Binding estadoSeleccionado}" Text="{Binding descripcion}"
+                <Entry x:Name="txtClave"  Placeholder="Ingrese la clave" Grid.Row="4" Grid.Column="0" />
+                <Label x:Name="lblPerfil" Grid.Row="5" Grid.Column="0" Text="Perfil:"
                    Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
-                <Button x:Name="btnGrabar" Text="Grabar" Clicked="btnGrabar_Clicked" Style="{StaticResource ButtonStyle}" Grid.Row="7" Grid.Column="0" />
+                <Picker x:Name="pckPerfiles" Grid.Row="6" Grid.Column="0" BindingContext="{Binding perfiles}"
+                    ItemDisplayBinding="{Binding descripcion}" 
+                    SelectedIndexChanged="pckPerfiles_SelectedIndexChanged" />
+                <Label x:Name="lblEstado" Grid.Row="7" Grid.Column="0" Text="Estado:"
+                   Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
+                <Picker x:Name="pckEstados" Grid.Row="8" Grid.Column="0" BindingContext="{Binding estados}"
+                    ItemDisplayBinding="{Binding descripcion}" 
+                    SelectedIndexChanged="pckEstados_SelectedIndexChanged" />
+                <Button x:Name="btnGrabar" Text="Grabar" Clicked="btnGrabar_Clicked" Style="{StaticResource ButtonStyle}" Grid.Row="9" Grid.Column="0" />
 
             </Grid>
         </StackLayout>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="regemp.NuevoEmpleado">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="BackgroundColor" Value="#77d065"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="HeightRequest" Value="42"/>
+                <Setter Property="BorderRadius" Value="5"/>
+                <Setter Property="BorderWidth" Value="0" />
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style x:Key="TitleLabelStyle" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="End"/>
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+                <Image Source="https://www.kodice.com.ec/wp-content/uploads/2022/04/Logo-empreg-300x225.png"/>
+            </Frame>
+            <Grid VerticalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Empleado" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" />
+                <Label x:Name="lblNombres" Grid.Row="1" Grid.Column="0" Text="Nombres:"
+                   Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
+                <Entry x:Name="txtNombres"  Placeholder="Ingrese nombres" Grid.Row="2" Grid.Column="0" />
+                <Label x:Name="lblApellidos" Grid.Row="3" Grid.Column="0" Text="Apellidos:"
+                   Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
+                <Entry x:Name="txtApellidos"  Placeholder="Ingrese apellidos" Grid.Row="4" Grid.Column="0" />
+                <Label x:Name="lblDireccion" Grid.Row="5" Grid.Column="0" Text="Dirección:"
+                   Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
+                <Entry x:Name="txtDireccion"  Placeholder="Ingrese direccion" Grid.Row="6" Grid.Column="0" />
+                <Label x:Name="lblCelular" Grid.Row="5" Grid.Column="0" Text="Celular:"
+                   Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
+                <Entry x:Name="txtCelular"  Placeholder="Ingrese celular" Grid.Row="6" Grid.Column="0" 
+                       Keyboard="Numeric"/>
+                <Label x:Name="lblEmail" Grid.Row="5" Grid.Column="0" Text="Email:"
+                   Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
+                <Entry x:Name="txtEmail"  Placeholder="Ingrese email" Grid.Row="6" Grid.Column="0" 
+                       Keyboard="Numeric"/>
+
+                <Label x:Name="lblUsuario" Grid.Row="7" Grid.Column="0" Text="Usuario:"
+                   Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
+                <Picker x:Name="pckUsuarios" Grid.Row="8" Grid.Column="0" BindingContext="{Binding usuarios}"
+                    ItemDisplayBinding="{Binding nombreUsuario}" 
+                    SelectedIndexChanged="pckUsuarios_SelectedIndexChanged" />
+                <Label x:Name="lblDepartamento" Grid.Row="7" Grid.Column="0" Text="Departamento:"
+                   Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
+                <Picker x:Name="pckDepartamentos" Grid.Row="8" Grid.Column="0" BindingContext="{Binding departamentos}"
+                    ItemDisplayBinding="{Binding descripcion}" 
+                    SelectedIndexChanged="pckDepartamentos_SelectedIndexChanged" />
+
+                <Label x:Name="lblEstado" Grid.Row="7" Grid.Column="0" Text="Estado:"
+                   Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Left"/>
+                <Picker x:Name="pckEstados" Grid.Row="8" Grid.Column="0" BindingContext="{Binding estados}"
+                    ItemDisplayBinding="{Binding descripcion}" 
+                    SelectedIndexChanged="pckEstados_SelectedIndexChanged" />
+                <Button x:Name="btnGrabar" Text="Grabar" Clicked="btnGrabar_Clicked" Style="{StaticResource ButtonStyle}" Grid.Row="9" Grid.Column="0" />
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    
+                                 

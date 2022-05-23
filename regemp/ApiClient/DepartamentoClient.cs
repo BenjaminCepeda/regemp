@@ -4,9 +4,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-
-
-
 using System.Diagnostics;
 
 namespace regemp.ApiClient
@@ -40,10 +37,10 @@ namespace regemp.ApiClient
             return datos;
         }
 
-        public async Task<Departamento> GetDataAsync(string pwd)
+        public async Task<Departamento> GetDataAsync(string id)
         {
             Departamento datos = null;
-            Uri uri = new Uri(string.Format(ApiConstants.API_URL + ENDPOINT_NAME + "/{0}/", pwd));
+            Uri uri = new Uri(string.Format(ApiConstants.API_URL + ENDPOINT_NAME + "/{0}/", id));
             try
             {
                 HttpResponseMessage response = await client.GetAsync(uri);
@@ -76,6 +73,7 @@ namespace regemp.ApiClient
                 }
                 else
                 {
+                    uri = new Uri(string.Format(ApiConstants.API_URL + ENDPOINT_NAME + "/{0}/", item.id));
                     response = await client.PutAsync(uri, content);
                 }
 

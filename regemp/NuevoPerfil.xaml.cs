@@ -8,41 +8,57 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using regemp.ApiClient;
 using regemp.util;
-
 namespace regemp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NuevoDepartamento : ContentPage
+    public partial class NuevoPerfil : ContentPage
     {
-        Departamento departamento;
+        Perfil perfil;
         List<Estado> estados;
+        int esAdministrador = 0;
+        Estado estadoSeleccionado ;
         bool esNuevoRegistro = true;
-        public Estado estadoSeleccionado;
 
-        public NuevoDepartamento()
+        public NuevoPerfil()
         {
             InitializeComponent();
-            departamento = new Departamento();
+            perfil = new Perfil();
             cargaDatos();
         }
-        public NuevoDepartamento(Departamento departamentoActual)
+
+        public NuevoPerfil(Perfil perfilActual)
         {
             InitializeComponent();
             esNuevoRegistro = false;
-            departamento = departamentoActual;
+            perfil = perfilActual;
             cargaDatos();
 
+        }
+
+        private void swtEsAdministrador_Toggled(object sender, ToggledEventArgs e)
+        {
+            Switch swtEsAdministrador = sender as Switch;
+            if (swtEsAdministrador.IsToggled)
+            {
+                esAdministrador = 1;
+            }
+            else
+            {
+                esAdministrador = 0;
+            }
         }
 
         async private void btnGrabar_Clicked(object sender, EventArgs e)
         {
-            departamento.descripcion = txtDescripcion.Text;
-            departamento.estado = estadoSeleccionado;
-            DepartamentoClient api;
+            perfil.descripcion = txtDescripcion.Text;
+            perfil.esAdministrador = esAdministrador;
+            perfil.estado = estadoSeleccionado;
+
+            PerfilClient api;
             try
             {
-                api = new DepartamentoClient();
-                await api.SaveDataAsync(departamento,esNuevoRegistro);
+                api = new PerfilClient();
+                await api.SaveDataAsync(perfil, esNuevoRegistro);
             }
             catch (Exception ex)
             {
@@ -59,19 +75,25 @@ namespace regemp
         {
             Picker picker = sender as Picker;
             Estado estado = (Estado)picker.SelectedItem;
-            departamento.idEstado = estado.id;
+            perfil.idEstado = estado.id;
         }
 
-        async private void cargaDatos() {
+        async private void cargaDatos()
+        {
             EstadoClient estadoAPI = new EstadoClient();
             estados = await estadoAPI.GetAllDataAsync();
             pckEstados.ItemsSource = estados;
-            if (!esNuevoRegistro) {
-                estadoSeleccionado = departamento.estado;
-                txtDescripcion.Text = departamento.descripcion;
+            if (!esNuevoRegistro)
+            {
+                estadoSeleccionado = perfil.estado;
+                txtDescripcion.Text = perfil.descripcion;
                 pckEstados.SelectedIndex = estados.FindIndex(a => a.id == estadoSeleccionado.id);
+                if (perfil.esAdministrador > 0)
+                { swtEsAdministrador.IsToggled = true;}
+                else
+                { swtEsAdministrador.IsToggled = false;}
             }
-            else { pckEstados.SelectedIndex = 1; }
         }
+
     }
 }

@@ -26,24 +26,46 @@
         <StackLayout>
             <Frame BackgroundColor="#2196F3" Padding="20" CornerRadius="0">
                 <Image Source="https://www.kodice.com.ec/wp-content/uploads/2022/04/Logo-empreg-300x225.png" HorizontalOptions="CenterAndExpand" />
-                
+
             </Frame>
             <Grid VerticalOptions="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition  />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Label Text="Bienvenido: " FontSize="Large" FontAttributes="Bold" TextColor="red" HorizontalTextAlignment="End" Grid.Row="1" Grid.Column="0" />
-                <Label x:Name="lblNombreUsuario" Grid.Row="1" Grid.Column="1" 
+                <Label Text="Bienvenido: " FontSize="Large" FontAttributes="Bold" TextColor="red" HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="0" />
+                <Label x:Name="lblNombreUsuario" Grid.Row="0" Grid.Column="1" 
                    Style="{ StaticResource TitleLabelStyle}" HorizontalTextAlignment="Start"/>
+                
+                <Button x:Name="usuario" Clicked="usuario_Clicked" ImageSource="https://www.kodice.com.ec/wp-content/uploads/2022/04/Logo-empreg-300x225.png" 
+                        HeightRequest="100" WidthRequest="800" Grid.Row="1" Grid.Column="0" HorizontalOptions="CenterAndExpand"/>
+                <Label Text="USUARIO" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" TextColor="Blue"/>
+
+                <Button x:Name="btnEmpleado" Clicked="btnEmpleado_Clicked" ImageSource="https://www.kodice.com.ec/wp-content/uploads/2022/04/Logo-empreg-300x225.png"
+                       HeightRequest="100" WidthRequest="800" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
+                <Label Text="EMPLEADO" Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" TextColor="Blue" />
+
+                <Button x:Name="btnDepartamento" Clicked="btnDepartamento_Clicked" ImageSource="https://www.kodice.com.ec/wp-content/uploads/2022/04/Logo-empreg-300x225.png"
+                         HeightRequest="100" WidthRequest="800" Grid.Row="3" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="Center"/>
+                <Label Text="DEPARTAMENTO" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" FontSize="Large" FontAttributes="Bold" TextColor="Blue"/>
+
+                <Button x:Name="btnPerfil" Clicked="btnPerfil_Clicked" ImageSource="https://www.kodice.com.ec/wp-content/uploads/2022/04/Logo-empreg-300x225.png"
+                        HeightRequest="100" WidthRequest="800" Grid.Row="3" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center"/>
+                <Label Text="PERFIL" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Start" FontSize="Large" FontAttributes="Bold" TextColor="Blue"/>
             </Grid>
+            
+
         </StackLayout>
+        
     </ContentPage.Content>
+
+    
+
 </ContentPage>
