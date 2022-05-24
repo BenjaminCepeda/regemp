@@ -8,7 +8,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using regemp.ApiClient;
 using regemp.util;
-
+using Plugin.Media.Abstractions;
+using System.IO;
 
 namespace regemp
 {
@@ -23,6 +24,8 @@ namespace regemp
         Usuario usuarioSeleccionado = new Usuario();
         Departamento departamentoSeleccionado = new Departamento();
         Estado estadoSeleccionado = new Estado();
+        //byte[] binaryFoto;
+        string base64Foto;
 
         public NuevoEmpleado()
         {
@@ -50,8 +53,6 @@ namespace regemp
             pckUsuarios.ItemsSource = usuarios;
             departamentos = await departamentoAPI.GetAllDataAsync();
             pckDepartamentos.ItemsSource = departamentos;
-
-
             try
             {
                 if (!esNuevoRegistro)
@@ -64,10 +65,15 @@ namespace regemp
                     txtDireccion.Text = empleado.direccion;
                     txtCelular.Text = empleado.celular;
                     txtEmail.Text = empleado.email;
+                    base64Foto = empleado.foto;
+                    imgFoto.Source =  ImageSource.FromStream(
+                        () => new MemoryStream(Convert.FromBase64String(base64Foto)));
 
                     pckEstados.SelectedIndex = estados.FindIndex(a => a.id == estadoSeleccionado.id);
                     pckUsuarios.SelectedIndex = usuarios.FindIndex(a => a.id == usuarioSeleccionado.id);
                     pckDepartamentos.SelectedIndex = departamentos.FindIndex(a => a.id == departamentoSeleccionado.id);
+
+
                 }
             }
             catch (Exception ex)
@@ -114,8 +120,11 @@ namespace regemp
             empleado.usuario = usuarioSeleccionado;
             empleado.departamento = departamentoSeleccionado;
             empleado.estado = estadoSeleccionado;
+            empleado.foto = base64Foto;
+
 
             EmpleadoClient api;
+
             try
             {
                 api = new EmpleadoClient();
@@ -133,5 +142,25 @@ namespace regemp
 
 
         }
+
+        private async void btnFoto_Clicked(object sender, EventArgs e)
+        {
+            var foto = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions());
+            if (foto != null)
+            {
+                imgFoto.Source = ImageSource.FromStream(() =>
+                {
+                    Stream stream = foto.GetStream();
+                    var bytes = new byte[stream.Length];
+                    stream.ReadAsync(bytes, 0, (int)stream.Length);
+                    //binaryFoto = bytes; // Version imagen como arreglo de bytes
+
+                    base64Foto = System.Convert.ToBase64String(bytes);
+
+                    return foto.GetStream();
+                });
+            }
+        }
+        
     }
 }
