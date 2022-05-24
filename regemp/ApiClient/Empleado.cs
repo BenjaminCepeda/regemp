@@ -14,9 +14,9 @@ namespace regemp.ApiClient
         public int idUsuario { get; set; }
         public Usuario usuario { get; set; }
         public string email { get; set; }
+        public string clave { get; set; }
         public int idDepartamento { get; set; }
         public Departamento departamento { get; set; }
-        //public byte[] foto { get; set; }
         public string foto { get; set; }
         public int idEstado { get; set; }
         public Estado estado { get; set; }
